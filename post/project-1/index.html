@@ -368,11 +368,20 @@ We will create a new version of the dataframe (v2) since data is being removed</
 <p>Calculated the mean of ride_length =AVERAGE(N:N)</p>
 <p>Calculated the max ride_length =MAX(N:N)</p>
 <p>Calculated the mode of day_of_week =MODE(O:O)</p>
-<p>I also created a pivot table to quickly calculate and visualize the data.
-Calculated the average ride_length for members and casual riders. With rows = member_casual; Values = Average of ride_length.</p>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/excel_functions.png"/>
+</figure>
+
+<p>I also created a pivot table to quickly calculate and visualize the data.</p>
+<p>Calculated the average ride_length for members and casual riders. With rows = member_casual; Values = Average of ride_length.</p>
 <p>Calculated the average ride_length for users by day_of_week. With columns = day_of_week; Rows = member_casual; Values = Average of ride_length.</p>
 <p>Calculated the number of rides for users by day_of_week by adding Count of trip_id to Values, day of week to columns.</p>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/excel%20pivot%20table.png"/>
+</figure>
+
 <p>In R I conducted a descriptive analysis on ride length (all figures in seconds) – mean, median, max, min</p>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/descriptive%20analysis.png"/>
+</figure>
+
 <p>You can condense the four lines above to one line using summary() on the specific attribute
 summary(all_trips_v2$ride_length)</p>
 <p>Compare members and casual users</p>
@@ -390,6 +399,9 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
 <p>Now, We run the average ride time by each day for members vs casual users</p>
 <pre><code>aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
 </code></pre>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/average_ride_time_by_each_day.png"/>
+</figure>
+
 <p>analyze ridership data by type and weekday</p>
 <pre><code>all_trips_v2 %&gt;%
   mutate(weekday = wday(started_at, label = TRUE)) %&gt;%  #creates weekday field using wday()
@@ -398,6 +410,9 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
   ,average_duration = mean(ride_length)) %&gt;% 		# calculates the average duration
   arrange(member_casual, weekday)								# sorts
 </code></pre>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/ridership%20data%20by%20type%20and%20weekday"/>
+</figure>
+
 <p>Let&rsquo;s visualize the number of rides by rider type</p>
 <pre><code>all_trips_v2 %&gt;%
   mutate(weekday = wday(started_at, label = TRUE)) %&gt;%
@@ -408,6 +423,9 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
   ggplot(aes(x = weekday, y = number_of_rides, fill = member_casual)) +
   geom_col(position = &quot;dodge&quot;)
 </code></pre>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/number%20of%20rides%20by%20weekday.png"/>
+</figure>
+
 <p>Let&rsquo;s create a visualization for average duration</p>
 <pre><code>all_trips_v2 %&gt;%
   mutate(weekday = wday(started_at, label = TRUE)) %&gt;%
@@ -418,6 +436,9 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
   ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
   geom_col(position = &quot;dodge&quot;)
 </code></pre>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/average%20duration%20by%20weekday.png"/>
+</figure>
+
 <p>Creates visualization on number of rides by month and rider type:</p>
 <pre><code>all_trips_v2 %&gt;%
   group_by(member_casual, month) %&gt;%
@@ -431,6 +452,9 @@ aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
   ylab(&quot;Number of Rides (1e+05 = 100,000)&quot;) +
   xlab(&quot;Month&quot;)
 </code></pre>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio_2/images/number%20of%20rides%20by%20month.png"/>
+</figure>
+
 <p>#Part 5: Share</p>
 <p>Here is a summary of the key observations from above:</p>
 <ul>
