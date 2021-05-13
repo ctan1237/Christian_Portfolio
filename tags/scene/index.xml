@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>scene on Christian Tan</title>
-    <link>/tags/scene/</link>
+    <link>https://ctan1237.github.io/Christian_Portfolio_2/tags/scene/</link>
     <description>Recent content in scene on Christian Tan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Apr 2021 10:58:08 -0400</lastBuildDate><atom:link href="/tags/scene/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Apr 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://ctan1237.github.io/Christian_Portfolio_2/tags/scene/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Project 1: The Cyclistic Case Study</title>
-      <link>/post/project-1/</link>
+      <link>https://ctan1237.github.io/Christian_Portfolio_2/post/project-1/</link>
       <pubDate>Fri, 09 Apr 2021 10:58:08 -0400</pubDate>
       
-      <guid>/post/project-1/</guid>
+      <guid>https://ctan1237.github.io/Christian_Portfolio_2/post/project-1/</guid>
       <description>Mission Statement: The bike sharing company wants to analyze their users’ data to find the main differences between two certain types of users, the “casual” who pays for each ride and the “annual” member who pays a yearly subscription for the service.
 Part 1: Ask Key Objectives:   Identify the business task: Cyclistic wants to improve their earnings reaching out to their “casual” riders, and for that they have to analyze the different aspects of the “casual” and the annual customers.</description>
     </item>
