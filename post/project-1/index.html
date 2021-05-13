@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Project 1: The Cyclistic Case Study | Christian Tan</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="This analysis is for the case study from the Google Data Analytics Certificate (Cyclistic). ">
+    <meta name="generator" content="Hugo 0.83.1" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Project 1: The Cyclistic Case Study" />
+<meta property="og:description" content="This analysis is for the case study from the Google Data Analytics Certificate (Cyclistic). " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/project-1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-09T10:58:08-04:00" />
+<meta property="article:modified_time" content="2021-04-09T10:58:08-04:00" /><meta property="og:site_name" content="Christian Tan" />
+
+<meta itemprop="name" content="Project 1: The Cyclistic Case Study">
+<meta itemprop="description" content="This analysis is for the case study from the Google Data Analytics Certificate (Cyclistic). "><meta itemprop="datePublished" content="2021-04-09T10:58:08-04:00" />
+<meta itemprop="dateModified" content="2021-04-09T10:58:08-04:00" />
+<meta itemprop="wordCount" content="2125">
+<meta itemprop="keywords" content="scene," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Project 1: The Cyclistic Case Study"/>
+<meta name="twitter:description" content="This analysis is for the case study from the Google Data Analytics Certificate (Cyclistic). "/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('images/bike.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Christian Tan
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/christian-tan-173197154/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/ctan1237" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Project 1: The Cyclistic Case Study</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              This analysis is for the case study from the Google Data Analytics Certificate (Cyclistic). 
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=/post/project-1/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=/post/project-1/&amp;text=Project%201:%20The%20Cyclistic%20Case%20Study" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=/post/project-1/&amp;title=Project%201:%20The%20Cyclistic%20Case%20Study" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Project 1: The Cyclistic Case Study</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-04-09T10:58:08-04:00">April 9, 2021</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="mission-statement">Mission Statement:</h1>
+<p>The bike sharing company wants to analyze their users’ data to find the main differences between two certain types of users, the “casual” who pays for each ride and the “annual” member who pays a yearly subscription for the service.</p>
+<h1 id="part-1-ask">Part 1: Ask</h1>
+<h1 id="key-objectives">Key Objectives:</h1>
+<ol>
+<li>
+<p>Identify the business task:
+Cyclistic wants to improve their earnings reaching out to their “casual” riders, and for that they have to analyze the different aspects of the “casual” and the annual customers. They must be able to create a focused and successful marketing campaign to the “casual” customers that makes them change to the annual subscription.</p>
+</li>
+<li>
+<p>Consider key stakeholders:
+The main stakeholders here are the director of marketing and my manager Lily Moreno, the rest of the marketing analytics team, and the Cyclistic executive team.</p>
+</li>
+<li>
+<p>The business task:</p>
+</li>
+</ol>
+<p>With these facts given, the business task is defined as searching for the differences in the two kinds of users to make a targeted marketing campaign to the casual users in order for them to change to an annual subscription. So, the question is, what could motivate the casual users to change to an annual subscription?</p>
+<h1 id="part-2-prepare">Part 2: Prepare</h1>
+<h1 id="key-objectives-1">Key Objectives:</h1>
+<ol>
+<li>Determine the credibility of the data:</li>
+</ol>
+<p>The data is public data from Cyclistic. There is not much of a naming convention as the files are sometimes organized by quarter, or month, or the whole year and their names vary a lot. The naming of the columns also changes and there are some columns added and deleted over the years. However, the data seems to be in good condition and its first-hand data collected by the company itself with lots of entries and with lots of useful data.</p>
+<p>Guiding questions
+● Where is your data located?
+● How is the data organized?
+● Are there issues with bias or credibility in this data? Does your data ROCCC?
+● How are you addressing licensing, privacy, security, and accessibility?
+● How did you verify the data’s integrity?
+● How does it help you answer your question?
+● Are there any problems with the data?</p>
+<ol start="2">
+<li>Sort and filter the data:</li>
+</ol>
+<p>For this case study I will use R for its easy statistical analysis tools and data visualizations. In this part I collected the data from the source, wrangled the data, and combined all of it into a single file.</p>
+<p>Upload Divvy datasets (csv files) here</p>
+<pre><code>q2_2019 &lt;- read_csv(&quot;Divvy_Trips_2019_Q2.csv&quot;)
+q3_2019 &lt;- read_csv(&quot;Divvy_Trips_2019_Q3.csv&quot;)
+q4_2019 &lt;- read_csv(&quot;Divvy_Trips_2019_Q4.csv&quot;)
+q1_2020 &lt;- read_csv(&quot;Divvy_Trips_2020_Q1.csv&quot;)
+</code></pre>
+<p>Compare column names each of the files:</p>
+<p>While the names don&rsquo;t have to be in the same order, they DO need to match perfectly before we can use a command to join them into one file</p>
+<pre><code>colnames(q3_2019)
+colnames(q4_2019)
+colnames(q2_2019)
+colnames(q1_2020)
+</code></pre>
+<p>Rename columns to make them consisent with q1_2020 (as this will be the supposed going-forward table design for Divvy):</p>
+<pre><code>(q4_2019 &lt;- rename(q4_2019
+                   ,ride_id = trip_id
+                   ,rideable_type = bikeid
+                   ,started_at = start_time  
+                   ,ended_at = end_time  
+                   ,start_station_name = from_station_name
+                   ,start_station_id = from_station_id
+                   ,end_station_name = to_station_name
+                   ,end_station_id = to_station_id
+                   ,member_casual = usertype))
+
+(q3_2019 &lt;- rename(q3_2019
+                   ,ride_id = trip_id
+                   ,rideable_type = bikeid
+                   ,started_at = start_time  
+                   ,ended_at = end_time  
+                   ,start_station_name = from_station_name
+                   ,start_station_id = from_station_id
+                   ,end_station_name = to_station_name
+                   ,end_station_id = to_station_id
+                   ,member_casual = usertype))
+
+(q2_2019 &lt;- rename(q2_2019
+                   ,ride_id = &quot;01 - Rental Details Rental ID&quot;
+                   ,rideable_type = &quot;01 - Rental Details Bike ID&quot;
+                   ,started_at = &quot;01 - Rental Details Local Start Time&quot;  
+                   ,ended_at = &quot;01 - Rental Details Local End Time&quot;  
+                   ,start_station_name = &quot;03 - Rental Start Station Name&quot;
+                   ,start_station_id = &quot;03 - Rental Start Station ID&quot;
+                   ,end_station_name = &quot;02 - Rental End Station Name&quot;
+                   ,end_station_id = &quot;02 - Rental End Station ID&quot;
+                   ,member_casual = &quot;User Type&quot;))
+</code></pre>
+<p>Inspect the dataframes and look for incongruencies
+str(q1_2020)</p>
+<pre><code>str(q4_2019)
+
+str(q3_2019)
+
+str(q2_2019)
+</code></pre>
+<p>Convert ride_id and rideable_type to character so that they can stack correctly</p>
+<pre><code>q4_2019 &lt;-  mutate(q4_2019, ride_id = as.character(ride_id)
+                   ,rideable_type = as.character(rideable_type))
+
+q3_2019 &lt;-  mutate(q3_2019, ride_id = as.character(ride_id)
+                   ,rideable_type = as.character(rideable_type))
+
+q2_2019 &lt;-  mutate(q2_2019, ride_id = as.character(ride_id)
+                   ,rideable_type = as.character(rideable_type))
+</code></pre>
+<p>Stack individual quarter&rsquo;s data frames into one big data frame
+all_trips &lt;- bind_rows(q2_2019, q3_2019, q4_2019, q1_2020)</p>
+<p>Remove lat, long, birthyear, and gender fields as this data was dropped beginning in 2020</p>
+<pre><code>all_trips &lt;- all_trips %&gt;%  
+select(-c(start_lat, start_lng, end_lat, end_lng, birthyear, gender, &quot;01 - Rental Details Duration In Seconds Uncapped&quot;, &quot;05 - Member Details Member Birthday Year&quot;, &quot;Member Gender&quot;, &quot;tripduration&quot;))
+</code></pre>
+<h1 id="part-3-process">Part 3: Process</h1>
+<p>Key Objectives:</p>
+<ol>
+<li>Clean the data, and prepare the data for analysis</li>
+</ol>
+<p>To get a better sense of the data I downloaded the previous 12 months of the cyclstic trip data and ran a few excel functions.</p>
+<ul>
+<li>In Excel I sorted and filtered the data by opening the spreadsheet of the previous 12 months of cyclstic trip data and created a column called “ride_length.”</li>
+<li>I calculated the length of each ride by subtracting the column “started_at” from the column “ended_at” (for example, =D2-C2) and formatted the values as HH:MM:SS using Format &gt; Cells &gt; Time &gt; 37:30:55.</li>
+<li>I then created a column called “day_of_week,” and calculate the day of the week that each ride started using the “WEEKDAY” command (for example, =WEEKDAY(C2,1)) in each file.</li>
+<li>I Formatted it as General or as a number with no decimals, noting that 1 = 6 Sunday and 7 = Saturday.</li>
+</ul>
+<p>In R I also cleaned up and added data to prepare for analysis:</p>
+<h1 id="inspect-the-new-table-that-has-been-created">Inspect the new table that has been created</h1>
+<pre><code>colnames(all_trips)  #List of column names
+nrow(all_trips)  #How many rows are in data frame?
+dim(all_trips)  #Dimensions of the data frame?
+head(all_trips)  #See the first 6 rows of data frame.  Also tail(qs_raw)
+str(all_trips)  #See list of columns and data types (numeric, character, etc)
+summary(all_trips)  #Statistical summary of data. Mainly for numerics
+</code></pre>
+<p>There are a few problems we will need to fix:</p>
+<p>(1) In the &ldquo;member_casual&rdquo; column, there are two names for members (&ldquo;member&rdquo; and &ldquo;Subscriber&rdquo;) and two names for casual riders (&ldquo;Customer&rdquo; and &ldquo;casual&rdquo;). We will need to consolidate that from four to two labels.</p>
+<p>(2) The data can only be aggregated at the ride-level, which is too granular. We will want to add some additional columns of data &ndash; such as day, month, year &ndash; that provide additional opportunities to aggregate the data.</p>
+<p>(3) We will want to add a calculated field for length of ride since the 2020Q1 data did not have the &ldquo;tripduration&rdquo; column. We will add &ldquo;ride_length&rdquo; to the entire dataframe for consistency.</p>
+<p>(4) There are some rides where tripduration shows up as negative, including several hundred rides where Divvy took bikes out of circulation for Quality Control reasons. We will want to delete these rides.</p>
+<p>In the &ldquo;member_casual&rdquo; column, replace &ldquo;Subscriber&rdquo; with &ldquo;member&rdquo; and &ldquo;Customer&rdquo; with &ldquo;casual&rdquo;
+Before 2020, Divvy used different labels for these two types of riders &hellip; we will want to make our dataframe consistent with their current nomenclature</p>
+<p>N.B.: &ldquo;Level&rdquo; is a special property of a column that is retained even if a subset does not contain any values from a specific level</p>
+<p>Begin by seeing how many observations fall under each usertype</p>
+<pre><code>table(all_trips$member_casual)
+</code></pre>
+<p>Reassign to the desired values (we will go with the current 2020 labels)</p>
+<pre><code>all_trips &lt;-  all_trips %&gt;%
+mutate(member_casual = recode(member_casual, &quot;Subscriber&quot; = &quot;member&quot; ,&quot;Customer&quot; = &quot;casual&quot;))
+</code></pre>
+<p>Check to make sure the proper number of observations were reassigned</p>
+<pre><code>table(all_trips$member_casual)
+</code></pre>
+<p>Add columns that list the date, month, day, and year of each ride</p>
+<p>This will allow us to aggregate ride data for each month, day, or year &hellip; before completing these operations we could only aggregate at the ride level</p>
+<pre><code>all_trips$date &lt;- as.Date(all_trips$started_at) #The default format is yyyy-mm-dd
+all_trips$month &lt;- format(as.Date(all_trips$date), &quot;%m&quot;)
+all_trips$day &lt;- format(as.Date(all_trips$date), &quot;%d&quot;)
+all_trips$year &lt;- format(as.Date(all_trips$date), &quot;%Y&quot;)
+all_trips$day_of_week &lt;- format(as.Date(all_trips$date), &quot;%A&quot;)
+</code></pre>
+<p>Add a &ldquo;ride_length&rdquo; calculation to all_trips (in seconds)</p>
+<pre><code>all_trips$ride_length &lt;- difftime(all_trips$ended_at,all_trips$started_at)
+</code></pre>
+<p>Inspect the structure of the columns</p>
+<pre><code>str(all_trips)
+</code></pre>
+<p>Convert &ldquo;ride_length&rdquo; from Factor to numeric so we can run calculations on the data</p>
+<pre><code>is.factor(all_trips$ride_length)
+all_trips$ride_length &lt;- as.numeric(as.character(all_trips$ride_length))
+is.numeric(all_trips$ride_length)
+</code></pre>
+<p>Remove &ldquo;bad&rdquo; data
+The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
+We will create a new version of the dataframe (v2) since data is being removed</p>
+<pre><code>all_trips_v2 &lt;- all_trips[!(all_trips$start_station_name == &quot;HQ QR&quot; | all_trips$ride_length&lt;0),]
+</code></pre>
+<h1 id="part-4-analyze">Part 4: Analyze</h1>
+<p>More Excel functions to get a better sense of the data:</p>
+<p>Calculated the mean of ride_length =AVERAGE(N:N)</p>
+<p>Calculated the max ride_length =MAX(N:N)</p>
+<p>Calculated the mode of day_of_week =MODE(O:O)</p>
+<p>I also created a pivot table to quickly calculate and visualize the data.
+Calculated the average ride_length for members and casual riders. With rows = member_casual; Values = Average of ride_length.</p>
+<p>Calculated the average ride_length for users by day_of_week. With columns = day_of_week; Rows = member_casual; Values = Average of ride_length.</p>
+<p>Calculated the number of rides for users by day_of_week by adding Count of trip_id to Values, day of week to columns.</p>
+<p>In R I conducted a descriptive analysis on ride length (all figures in seconds) – mean, median, max, min</p>
+<p>You can condense the four lines above to one line using summary() on the specific attribute
+summary(all_trips_v2$ride_length)</p>
+<p>Compare members and casual users</p>
+<pre><code>aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = mean)
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = median)
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = max)
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
+</code></pre>
+<p>See the average ride time by each day for members vs casual users</p>
+<pre><code>aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
+</code></pre>
+<p>The days of the week are out of order. So I fixed that</p>
+<pre><code>all_trips_v2$day_of_week &lt;- ordered(all_trips_v2$day_of_week, levels=c(&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;))
+</code></pre>
+<p>Now, We run the average ride time by each day for members vs casual users</p>
+<pre><code>aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
+</code></pre>
+<p>analyze ridership data by type and weekday</p>
+<pre><code>all_trips_v2 %&gt;%
+  mutate(weekday = wday(started_at, label = TRUE)) %&gt;%  #creates weekday field using wday()
+  group_by(member_casual, weekday) %&gt;%  #groups by usertype and weekday
+  summarise(number_of_rides = n()							#calculates the number of rides and average duration
+  ,average_duration = mean(ride_length)) %&gt;% 		# calculates the average duration
+  arrange(member_casual, weekday)								# sorts
+</code></pre>
+<p>Let&rsquo;s visualize the number of rides by rider type</p>
+<pre><code>all_trips_v2 %&gt;%
+  mutate(weekday = wday(started_at, label = TRUE)) %&gt;%
+  group_by(member_casual, weekday) %&gt;%
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %&gt;%
+  arrange(member_casual, weekday)  %&gt;%
+  ggplot(aes(x = weekday, y = number_of_rides, fill = member_casual)) +
+  geom_col(position = &quot;dodge&quot;)
+</code></pre>
+<p>Let&rsquo;s create a visualization for average duration</p>
+<pre><code>all_trips_v2 %&gt;%
+  mutate(weekday = wday(started_at, label = TRUE)) %&gt;%
+  group_by(member_casual, weekday) %&gt;%
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %&gt;%
+  arrange(member_casual, weekday)  %&gt;%
+  ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
+  geom_col(position = &quot;dodge&quot;)
+</code></pre>
+<p>Creates visualization on number of rides by month and rider type:</p>
+<pre><code>all_trips_v2 %&gt;%
+  group_by(member_casual, month) %&gt;%
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %&gt;%
+  arrange(member_casual, month)  %&gt;%
+  ggplot(aes(x = month, y = number_of_rides, group = member_casual)) +
+  geom_line(aes(color = member_casual)) +
+  geom_point() +
+  labs(title = &quot;Table 6: Number of Rides by Month and Rider Type&quot;) +
+  ylab(&quot;Number of Rides (1e+05 = 100,000)&quot;) +
+  xlab(&quot;Month&quot;)
+</code></pre>
+<p>#Part 5: Share</p>
+<p>Here is a summary of the key observations from above:</p>
+<ul>
+<li>On average, each ride is about 22 minutes:</li>
+<li>Casual users ride for 38 minutes on average. Members ride for 14 minutes on average.</li>
+<li>Regardless of being a member or not, the most popular day to rent a bike is Saturday.</li>
+<li>Members rent bikes on a more consistent basis throughout the weekdays, whereas casual rentals are low Monday through Friday and peak towards the weekend.</li>
+<li>On any day of the week, casual users ride around 3 times longer than members.</li>
+<li>Bike rentals follow a seasonal pattern for both casual users and members. Lowest usage is in the winter with rentals starting to go up in the spring. Peak usage is in the summer before it starts to decline again during the Fall.</li>
+</ul>
+<p>First, let us revisit the key business task: discover how casual riders and Cyclistic members use their rental bikes differently.</p>
+<ul>
+<li>
+<p>It appears that members rent bikes for regular commuting&mdash;perhaps to work or school. This is based on the observation that the number of rides is fairly consistent over the weekdays compared to the weekends.</p>
+</li>
+<li>
+<p>On the other hand, casual user rentals are lower Monday through Friday and trend upwards starting on Friday and peaking on the weekend. This seems to indicate using the bikes for leisure activities such as touring the city, sightseeing, etc. The data that supports this is the longer average ride duration.</p>
+</li>
+</ul>
+<p>Here are my proposals:</p>
+<ol>
+<li>
+<p>Offer a weekend-only membership at a different price point than the full annual membership to entice casual users towards a full annual membership. They can only unlock bikes on Friday, Saturday, or Sunday.</p>
+</li>
+<li>
+<p>Create a &ldquo;Sightseeing&rdquo; promotion aimed at casual users that includes many routes that will cover all of the major sights of the city during the weekend. Casual riders could rent as they go, but they could see their city in one year and save money for the price of an annual membership.</p>
+</li>
+<li>
+<p>Make sure that campaigns are out in the market during the summer when ridership is at its annual peak.</p>
+</li>
+</ol>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/scene" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">scene</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="" >
+    &copy;  Christian Tan 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/christian-tan-173197154/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/ctan1237" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
