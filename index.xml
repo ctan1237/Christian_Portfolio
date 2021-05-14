@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analytics Portfolio on Christian Tan</title>
+    <title>Project Portfolio on Christian Tan</title>
     <link>https://ctan1237.github.io/Christian_Portfolio/</link>
-    <description>Recent content in Data Analytics Portfolio on Christian Tan</description>
+    <description>Recent content in Project Portfolio on Christian Tan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Apr 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://ctan1237.github.io/Christian_Portfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Project 1: The Cyclistic Case Study</title>
+      <title>Cyclistic - How a Bike-Share Company Can Navigate Speedy Success</title>
       <link>https://ctan1237.github.io/Christian_Portfolio/post/project-1/</link>
       <pubDate>Fri, 09 Apr 2021 10:58:08 -0400</pubDate>
       
       <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-1/</guid>
-      <description>Mission Statement: The bike sharing company wants to analyze their users’ data to find the main differences between two certain types of users, the “casual” who pays for each ride and the “annual” member who pays a yearly subscription for the service.
-Part 1: Ask Key Objectives:   Identify the business task: Cyclistic wants to improve their earnings reaching out to their “casual” riders, and for that they have to analyze the different aspects of the “casual” and the annual customers.</description>
+      <description>Table of Contents   Mission Statement and Preliminary Information
+  Data Preparation and Exploration
+  Data Processing
+  Data Analyzing
+  Share and Conclusion
+  Mission Statement: The bike sharing company wants to analyze their users’ data to find the main differences between two certain types of users, the “casual” who pays for each ride and the “annual” member who pays a yearly subscription for the service.</description>
     </item>
     
     <item>
-      <title>Project 2: The NBA 3-Point Revolution</title>
+      <title>Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart</title>
+      <link>https://ctan1237.github.io/Christian_Portfolio/post/project-3/</link>
+      <pubDate>Thu, 09 Apr 2020 10:58:08 -0400</pubDate>
+      
+      <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-3/</guid>
+      <description>Table of Contents   Mission Statement and Preliminary Information
+  Data Preparation and Exploration
+  Data Processing
+  Data Analyzing
+  Share and Conclusion
+  The Mission Statement: Bellabeat, a high-tech manufacturer of health-focused products for women, wants to analyze their smart device fitness data. This could help unlock new growth opportunities for the company. The goal is to focus on one of Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices.</description>
+    </item>
+    
+    <item>
+      <title>The NBA 3-Point Revolution - The Way For NBA Teams to Win More Games</title>
       <link>https://ctan1237.github.io/Christian_Portfolio/post/project-2/</link>
       <pubDate>Thu, 09 Apr 2020 10:58:08 -0400</pubDate>
       
@@ -37,8 +55,7 @@ Part 1: Ask Key Objectives:   Identify the business task: Cyclistic wants to imp
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ctan1237.github.io/Christian_Portfolio/contact/</guid>
-      <description>This is an example of a custom shortcode that you can put right into your content. You will need to add a form action to the the shortcode to make it work. Check out Formspree for a simple, free form service.
-Your Name Email Address An email address is required.  Message   </description>
+      <description> Your Name Email Address An email address is required.  Message   </description>
     </item>
     
   </channel>
