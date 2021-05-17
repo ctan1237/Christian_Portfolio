@@ -40,7 +40,7 @@
 <meta itemprop="name" content="Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart">
 <meta itemprop="description" content="This analysis is for a case study for the Google Analytics Certificate. "><meta itemprop="datePublished" content="2020-04-09T10:58:08-04:00" />
 <meta itemprop="dateModified" content="2020-04-09T10:58:08-04:00" />
-<meta itemprop="wordCount" content="721">
+<meta itemprop="wordCount" content="1466">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart"/>
 <meta name="twitter:description" content="This analysis is for a case study for the Google Analytics Certificate. "/>
@@ -233,7 +233,13 @@
 <p>1.Determine the credibility of the data:</p>
 <p>The data is public data from FitBit Fitness Tracker Data (CC0: Public Domain, dataset made available through Mobius): This Kaggle data set contains personal fitness tracker from thirty FitBit users. Thirty eligible Fitbit users consented to the submission of
 personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes
-information about daily activity, steps, and heart rate that can be used to explore users’ habits. This database is credible and has many cool different aspects on the user behavior of the trackers.</p>
+information about daily activity, steps, and heart rate that can be used to explore users’ habits. This database is somewhat credible and has many different aspects on the user behavior of the trackers.</p>
+<p>Using the ROCCC method:</p>
+<p>Reliability LOW - low number of subjects
+Original LOW - third party provider (Amazon Mechanical Turk)
+Comprehensive LOW - too many unknown parameters which will be crucial for the final analysis (comparison with Bellabeats customer base).
+Current MEDIUM - Data is from 2016, which is ok for “objective” fitness data.
+Cited LOW - collected via a third party platform, little background information.</p>
 <p>Importing the data</p>
 <pre><code>dailyActivity_merged &lt;- read.csv(&quot;../input/fitbit/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv&quot;)
 dailyCalories_merged &lt;- read.csv(&quot;../input/fitbit/Fitabase Data 4.12.16-5.12.16/dailyCalories_merged.csv&quot;)
@@ -268,38 +274,142 @@ daily_sleep$ActivityDate &lt;- as.Date(daily_sleep$ActivityDate,
 <pre><code>daily_activity_sleep &lt;- merge(x=daily_activity, y=daily_sleep,
                           by = c(&quot;Id&quot;, &quot;ActivityDate&quot;), all.x = TRUE)
 daily_activity_sleep [is.na(daily_activity_sleep)] &lt;- 0
+
+daily_activity &lt;- read_csv(&quot;../downloads/bellabeat/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv&quot;)
 </code></pre>
-<p>Data Bucketing: To make the analysis simpler, the following variables have been categorized: * Sleep (by hours): &lt; 6h, 6h - 8h, &gt; 8h</p>
+<p>head(daily_activity)</p>
+<p>daily_sleep &lt;- read_csv(&quot;../downloads/bellabeat/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv&quot;)</p>
+<p>head(daily_sleep)</p>
+<p>daily_activity$ActivityDate &lt;- as.Date(daily_activity$ActivityDate, &ldquo;%m/%d/%Y&rdquo;)
+daily_sleep$ActivityDate &lt;- parse_date_time(daily_sleep$SleepDay,
+orders = &ldquo;mdy HMS&rdquo;)
+daily_sleep$ActivityDate &lt;- as.Date(daily_sleep$ActivityDate,
+&ldquo;%m/%d/%y %h:%m:%s&rdquo;)</p>
+<p>daily_activity_sleep &lt;- merge(x=daily_activity, y=daily_sleep,
+by = c(&ldquo;Id&rdquo;, &ldquo;ActivityDate&rdquo;), all.x = TRUE)
+daily_activity_sleep [is.na(daily_activity_sleep)] &lt;- 0</p>
+<p>daily_sleep_2 &lt;- rename(daily_sleep,
+id = Id,
+sleep_day = SleepDay,
+total_sleep_records = TotalSleepRecords,
+total_minutes_asleep = TotalMinutesAsleep,
+total_time_in_bed = TotalTimeInBed)</p>
+<p>daily_activity_2 &lt;- rename(daily_activity,
+id = Id,
+activity_date = ActivityDate,
+total_steps = TotalSteps,
+total_distance = TotalDistance,
+tracker_distance = TrackerDistance,
+logged_activities_distance = LoggedActivitiesDistance,
+very_active_distance = VeryActiveDistance,
+moderately_active_distance = ModeratelyActiveDistance,
+lightly_active_distance = LightActiveDistance,
+sedentary_active_distance = SedentaryActiveDistance,
+very_active_minutes = VeryActiveMinutes,
+fairly_active_minutes = FairlyActiveMinutes,
+lightly_active_minutes = LightlyActiveMinutes,
+sedentary_minutes = SedentaryMinutes,
+calories = Calories)
+daily_activity_2$month_day &lt;- format(as.Date(daily_activity_2$activity_date), &ldquo;%m-%d&rdquo;) # Extract month and day from the activity date column
+head(daily_activity_2)</p>
+<p>daily_sleep_2$month_day &lt;- as.Date(daily_sleep_2$sleep_day,&quot;%m/%d/%Y&quot;) # Convert character format into date format</p>
+<p>daily_sleep_2$month_day &lt;- format(as.Date(daily_sleep_2$month_day), &ldquo;%m-%d&rdquo;)</p>
+<p>merged_sleep_activity &lt;-  merge(daily_activity_2,daily_sleep_2,by = c(&ldquo;id&rdquo;, &ldquo;month_day&rdquo;))</p>
+<p>Data Bucketing: To make the analysis simpler, the following variables have been categorized:</p>
+<ul>
+<li>
+<p>Sleep (by hours): &lt; 6h, 6h - 8h, &gt; 8h</p>
+</li>
+<li>
 <p>Calories (by number of calories burnt): &lt; 1500, 1500 - 2500, &gt; 2500</p>
+</li>
+<li>
 <p>Steps (by number of steps): &lt; 5000, 5000 - 10000, &gt; 10000</p>
+</li>
+<li>
 <p>Distance (by Kilometers): &lt; 5km, 5km - 10 km, &gt; 10km</p>
 <pre><code>daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
   mutate(sleep_categories = case_when(
-    TotalMinutesAsleep &gt; 360 &amp; TotalMinutesAsleep &lt;= 480 ~ &quot;6h - 8h&quot;,
+    TotalMinutesAsleep &gt; 360 &amp; TotalMinutesAsleep &lt;= 480 ~ &quot; 6h - 8h&quot;,
     TotalMinutesAsleep &gt; 480 ~ &quot;&gt; 8h&quot;,
     TRUE ~ &quot;&lt; 6h&quot;))
 
 
-  daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
-      mutate(calorie_categories = case_when(
-        Calories &gt; 1500 &amp; Calories &lt;= 2500 ~ &quot;1.5k - 2.5k&quot;,
-        Calories &gt; 2500 ~ &quot;&gt; 2.5k&quot;,
-        TRUE ~ &quot;&lt; 1.5k&quot;))
+daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
+    mutate(calorie_categories = case_when(
+      Calories &gt; 1500 &amp; Calories &lt;= 2500 ~ &quot;1.5k - 2.5k&quot;,
+      Calories &gt; 2500 ~ &quot;&gt; 2.5k&quot;,
+      TRUE ~ &quot;&lt; 1.5k&quot;))
 
 
-  daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
-    mutate(step_categories = case_when(
-      TotalSteps &gt; 5000 &amp; TotalSteps &lt;= 10000 ~ &quot;5k - 10k&quot;,
-      TotalSteps &gt; 10000 ~ &quot;&gt; 10k&quot;,
-      TRUE ~ &quot;&lt; 5k&quot;))
+daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
+  mutate(step_categories = case_when(
+    TotalSteps &gt; 5000 &amp; TotalSteps &lt;= 10000 ~ &quot;5k - 10k&quot;,
+    TotalSteps &gt; 10000 ~ &quot;&gt; 10k&quot;,
+    TRUE ~ &quot;&lt; 5k&quot;))
 
-  daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
-    mutate(distance_categories = case_when(
-      TotalDistance &gt; 5 &amp; TotalDistance &lt;= 10 ~ &quot;5km - 10km&quot;,
-      TotalDistance &gt; 10 ~ &quot;&gt; 10km&quot;,
-      TRUE ~ &quot;&lt; 5km&quot;))
+daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
+  mutate(distance_categories = case_when(
+    TotalDistance &gt; 5 &amp; TotalDistance &lt;= 10 ~ &quot;5km - 10km&quot;,
+    TotalDistance &gt; 10 ~ &quot;&gt; 10km&quot;,
+    TRUE ~ &quot;&lt; 5km&quot;))
 </code></pre>
+</li>
+</ul>
 <h1 id="part-4-analyze">Part 4: Analyze:</h1>
+<pre><code>ggplot(data = merged_sleep_activity) +
+  geom_point(mapping = aes(x = total_minutes_asleep, y = calories), stat='identity') +
+  geom_smooth(method = &quot;lm&quot;, mapping = aes(x=total_minutes_asleep, y = calories)) +
+  labs(x=&quot;Total Sleep Amount&quot; , y=&quot;Calories&quot;)+
+  theme(axis.text.y = element_text(size = 15), axis.text.x = element_text(size=15))+
+  theme( axis.title.x = element_text(color = &quot;black&quot;, size = 25, face = &quot;bold&quot;),
+         axis.title.y = element_text(color = &quot;black&quot;, size = 25, face = &quot;bold&quot;))
+</code></pre>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio/images/calories%20vs%20total%20sleep%20amount%20scatterplot%20and%20trendline.png"/>
+</figure>
+
+<p>Based on this scatterplot, the trendline initially shows there isn&rsquo;t any correlation between calories burnt and amount of sleep, but on further analysis in the next graph using a box plot, we can see &hellip;</p>
+<pre><code>ggplot(data = daily_activity_sleep) +
+  geom_boxplot(mapping = aes(x=step_categories, y=Calories, fill=step_categories))
+</code></pre>
+<p><figure><img src="https://ctan1237.github.io/Christian_Portfolio/images/sleep%20vs%20calories%20burnt.png"/>
+</figure>
+
+&hellip; there seems to be a clear relation between sleep and calories burnt.</p>
+<p>This is an interesting chart, which shows a few unique observations -</p>
+<ul>
+<li>
+<p>People walking less than 5km a day burn between 1400 - 2200 calories. Similarly, people walking between 5km - 10km burn between 2000 - 3200 calories and people walking more than 10km a day burn between 2800 - 4000 calories a day</p>
+</li>
+<li>
+<p>People who tend to sleep less than 6 hours a day (undersleeping) and people who tend to sleep more than 8 hours a day (oversleeping) burn fewer calories while walking similar number of steps and covering a similar distance in comparison to people sleeping 6-8 hours a day (optimal sleep)</p>
+</li>
+<li>
+<p>The area analysis for each graph also shows the the variance of calories burnt for a persons oversleeping or undersleeping is more wide compared to those who sleep optimally.</p>
+</li>
+</ul>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio/images/sleep%20vs%20steps.png"/>
+</figure>
+
+<p>Step count also shows that people who sleep the optimal time will on average have more steps and be more active. I like this chart a lot, because it shows very clearly the relation between the step activity level and sleep quality as the optimal range for sleeping shows an increase in the average amount of steps.</p>
+<ul>
+<li>People who get the optimal sleep (Between 6-8 hours) have a higher overall average total steps than people who do not get enough sleep (less than 6 hours) and people who may oversleep (more than 8 hours).</li>
+<li>This shows step count is another important measure for burning calories.</li>
+</ul>
+<h1 id="recommendations">Recommendations</h1>
+<p>Based on the analysis conducted above, the following are my recommendations to Urška Sršen and the marketing team:</p>
+<ul>
+<li>
+<p>The graphs above show there is a relationship between sleep and calories burnt. This observation can show the customers the benefits of tracking sleep in achieving their weight loss goals.</p>
+</li>
+<li>
+<p>The amount of steps is another important measure for calories burnt. Thus there are benefits of logging exercise data in a customers weight loss journey.</p>
+</li>
+<li>
+<p>Tracking sleep can help regularize sleeping patterns, which leads to a better quality of life. This is a position the marketing team can explore. The data also shows a clear trend of better quality sleep linked to the activity level that would be interesting to improve your sleep and in general to low stress and improving your quality of life.</p>
+</li>
+</ul>
+<p>With all this in mind I would suggest focusing the marketing messages on improving sleep and on the fitness aspects of the devices. Using this device to track your sleep and activity will encourage the user to increase their activities seeing the improvement in their metrics.</p>
 <ul class="pa0">
   
 </ul>
