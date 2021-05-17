@@ -276,45 +276,55 @@ daily_sleep$ActivityDate &lt;- as.Date(daily_sleep$ActivityDate,
 daily_activity_sleep [is.na(daily_activity_sleep)] &lt;- 0
 
 daily_activity &lt;- read_csv(&quot;../downloads/bellabeat/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv&quot;)
-</code></pre>
-<p>head(daily_activity)</p>
-<p>daily_sleep &lt;- read_csv(&quot;../downloads/bellabeat/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv&quot;)</p>
-<p>head(daily_sleep)</p>
-<p>daily_activity$ActivityDate &lt;- as.Date(daily_activity$ActivityDate, &ldquo;%m/%d/%Y&rdquo;)
+
+head(daily_activity)
+
+daily_sleep &lt;- read_csv(&quot;../downloads/bellabeat/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv&quot;)
+
+head(daily_sleep)
+
+daily_activity$ActivityDate &lt;- as.Date(daily_activity$ActivityDate, &quot;%m/%d/%Y&quot;)
 daily_sleep$ActivityDate &lt;- parse_date_time(daily_sleep$SleepDay,
-orders = &ldquo;mdy HMS&rdquo;)
+                                            orders = &quot;mdy HMS&quot;)
 daily_sleep$ActivityDate &lt;- as.Date(daily_sleep$ActivityDate,
-&ldquo;%m/%d/%y %h:%m:%s&rdquo;)</p>
-<p>daily_activity_sleep &lt;- merge(x=daily_activity, y=daily_sleep,
-by = c(&ldquo;Id&rdquo;, &ldquo;ActivityDate&rdquo;), all.x = TRUE)
-daily_activity_sleep [is.na(daily_activity_sleep)] &lt;- 0</p>
-<p>daily_sleep_2 &lt;- rename(daily_sleep,
-id = Id,
-sleep_day = SleepDay,
-total_sleep_records = TotalSleepRecords,
-total_minutes_asleep = TotalMinutesAsleep,
-total_time_in_bed = TotalTimeInBed)</p>
-<p>daily_activity_2 &lt;- rename(daily_activity,
-id = Id,
-activity_date = ActivityDate,
-total_steps = TotalSteps,
-total_distance = TotalDistance,
-tracker_distance = TrackerDistance,
-logged_activities_distance = LoggedActivitiesDistance,
-very_active_distance = VeryActiveDistance,
-moderately_active_distance = ModeratelyActiveDistance,
-lightly_active_distance = LightActiveDistance,
-sedentary_active_distance = SedentaryActiveDistance,
-very_active_minutes = VeryActiveMinutes,
-fairly_active_minutes = FairlyActiveMinutes,
-lightly_active_minutes = LightlyActiveMinutes,
-sedentary_minutes = SedentaryMinutes,
-calories = Calories)
-daily_activity_2$month_day &lt;- format(as.Date(daily_activity_2$activity_date), &ldquo;%m-%d&rdquo;) # Extract month and day from the activity date column
-head(daily_activity_2)</p>
-<p>daily_sleep_2$month_day &lt;- as.Date(daily_sleep_2$sleep_day,&quot;%m/%d/%Y&quot;) # Convert character format into date format</p>
-<p>daily_sleep_2$month_day &lt;- format(as.Date(daily_sleep_2$month_day), &ldquo;%m-%d&rdquo;)</p>
-<p>merged_sleep_activity &lt;-  merge(daily_activity_2,daily_sleep_2,by = c(&ldquo;id&rdquo;, &ldquo;month_day&rdquo;))</p>
+                                    &quot;%m/%d/%y %h:%m:%s&quot;)
+
+daily_activity_sleep &lt;- merge(x=daily_activity, y=daily_sleep,
+                              by = c(&quot;Id&quot;, &quot;ActivityDate&quot;), all.x = TRUE)
+daily_activity_sleep [is.na(daily_activity_sleep)] &lt;- 0
+
+daily_sleep_2 &lt;- rename(daily_sleep,
+                        id = Id,
+                        sleep_day = SleepDay,
+                        total_sleep_records = TotalSleepRecords,
+                        total_minutes_asleep = TotalMinutesAsleep,
+                        total_time_in_bed = TotalTimeInBed)
+
+daily_activity_2 &lt;- rename(daily_activity,
+                           id = Id,
+                           activity_date = ActivityDate,
+                           total_steps = TotalSteps,
+                           total_distance = TotalDistance,
+                           tracker_distance = TrackerDistance,
+                           logged_activities_distance = LoggedActivitiesDistance,
+                           very_active_distance = VeryActiveDistance,
+                           moderately_active_distance = ModeratelyActiveDistance,
+                           lightly_active_distance = LightActiveDistance,
+                           sedentary_active_distance = SedentaryActiveDistance,
+                           very_active_minutes = VeryActiveMinutes,
+                           fairly_active_minutes = FairlyActiveMinutes,
+                           lightly_active_minutes = LightlyActiveMinutes,
+                           sedentary_minutes = SedentaryMinutes,
+                           calories = Calories)
+daily_activity_2$month_day &lt;- format(as.Date(daily_activity_2$activity_date), &quot;%m-%d&quot;) # Extract month and day from the activity date column
+head(daily_activity_2)
+
+daily_sleep_2$month_day &lt;- as.Date(daily_sleep_2$sleep_day,&quot;%m/%d/%Y&quot;) # Convert character format into date format
+
+daily_sleep_2$month_day &lt;- format(as.Date(daily_sleep_2$month_day), &quot;%m-%d&quot;)
+
+merged_sleep_activity &lt;-  merge(daily_activity_2,daily_sleep_2,by = c(&quot;id&quot;, &quot;month_day&quot;))
+</code></pre>
 <p>Data Bucketing: To make the analysis simpler, the following variables have been categorized:</p>
 <ul>
 <li>
