@@ -8,17 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://ctan1237.github.io/Christian_Portfolio/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart</title>
-      <link>https://ctan1237.github.io/Christian_Portfolio/post/project-3/</link>
-      <pubDate>Fri, 09 Apr 2021 10:58:08 -0400</pubDate>
+      <title>The Ultimate Covid-19 Data Visualization</title>
+      <link>https://ctan1237.github.io/Christian_Portfolio/post/project-4/</link>
+      <pubDate>Sun, 09 May 2021 10:58:08 -0400</pubDate>
       
-      <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-3/</guid>
-      <description>Table of Contents   Mission Statement and Preliminary Information
-  Data Preparation and Exploration
-  Data Processing
-  Data Analyzing
-  Share and Conclusion
-  The Mission Statement: Bellabeat, a high-tech manufacturer of health-focused products for women, wants to analyze their smart device fitness data. This could help unlock new growth opportunities for the company. The goal is to focus on one of Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices.</description>
+      <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-4/</guid>
+      <description>Background:
+The main goal for this project was to create a Dashboard Visualization for important data from the Covid-19 pandemic using Excel, SQL, and Tableau. The size of the spreadsheet was around 90,000 lines of data. Skills that were used included: Joins, CTE&amp;rsquo;s, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types, and Creating Visualizations/Dashboards in Tableau.
+The data is from https://ourworldindata.org/covid-deaths.
+Part 1: First, I downloaded the data into excel spreadsheets to do some initial cleaning.</description>
     </item>
     
     <item>
@@ -38,7 +36,7 @@
     <item>
       <title>The NBA 3-Point Revolution - The Way For NBA Teams to Win More Games</title>
       <link>https://ctan1237.github.io/Christian_Portfolio/post/project-2/</link>
-      <pubDate>Fri, 09 Apr 2021 10:58:08 -0400</pubDate>
+      <pubDate>Tue, 09 Feb 2021 10:58:08 -0400</pubDate>
       
       <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-2/</guid>
       <description>Table of Contents
@@ -47,6 +45,20 @@
    2.1 Data information 2.2 Brief Exploration 2.3 Data Transformations  Modeling   3.1 Bar Chart 3.2 Plot Chart 3.3 Density Plot Chart 3.4 Significant/Insignificant Coefficients 3.5 Predictive Performance 3.6 Accuracy, Recall, Precision   Results and Discussion
   Conclusion
   1. Project Description   Conventionally, in the sport of basketball there are defined player positions with standard body profiles.</description>
+    </item>
+    
+    <item>
+      <title>Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart</title>
+      <link>https://ctan1237.github.io/Christian_Portfolio/post/project-3/</link>
+      <pubDate>Mon, 09 Mar 2020 10:58:08 -0400</pubDate>
+      
+      <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-3/</guid>
+      <description>Table of Contents   Mission Statement and Preliminary Information
+  Data Preparation and Exploration
+  Data Processing
+  Data Analyzing
+  Share and Conclusion
+  The Mission Statement: Bellabeat, a high-tech manufacturer of health-focused products for women, wants to analyze their smart device fitness data. This could help unlock new growth opportunities for the company. The goal is to focus on one of Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices.</description>
     </item>
     
   </channel>
