@@ -34,13 +34,13 @@
 <meta property="og:description" content="This analysis is for a case study for the Google Analytics Certificate. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ctan1237.github.io/Christian_Portfolio/post/project-3/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-04-09T10:58:08-04:00" />
-<meta property="article:modified_time" content="2020-04-09T10:58:08-04:00" /><meta property="og:site_name" content="Christian Tan" />
+<meta property="article:published_time" content="2021-04-09T10:58:08-04:00" />
+<meta property="article:modified_time" content="2021-04-09T10:58:08-04:00" /><meta property="og:site_name" content="Christian Tan" />
 
 <meta itemprop="name" content="Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart">
-<meta itemprop="description" content="This analysis is for a case study for the Google Analytics Certificate. "><meta itemprop="datePublished" content="2020-04-09T10:58:08-04:00" />
-<meta itemprop="dateModified" content="2020-04-09T10:58:08-04:00" />
-<meta itemprop="wordCount" content="1421">
+<meta itemprop="description" content="This analysis is for a case study for the Google Analytics Certificate. "><meta itemprop="datePublished" content="2021-04-09T10:58:08-04:00" />
+<meta itemprop="dateModified" content="2021-04-09T10:58:08-04:00" />
+<meta itemprop="wordCount" content="1385">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart"/>
 <meta name="twitter:description" content="This analysis is for a case study for the Google Analytics Certificate. "/>
@@ -188,7 +188,7 @@
       <h1 class="f1 athelas mt3 mb1">Bellabeat - 3 Ways a Wellness Tech Company Can Play It Smart</h1>
       
       
-      <time class="f6 mv4 dib tracked" datetime="2020-04-09T10:58:08-04:00">April 9, 2020</time>
+      <time class="f6 mv4 dib tracked" datetime="2021-04-09T10:58:08-04:00">April 9, 2021</time>
 
       
       
@@ -368,18 +368,16 @@ daily_activity_sleep &lt;- daily_activity_sleep %&gt;%
   theme(axis.text.y = element_text(size = 15), axis.text.x = element_text(size=15))+
   theme( axis.title.x = element_text(color = &quot;black&quot;, size = 25, face = &quot;bold&quot;),
          axis.title.y = element_text(color = &quot;black&quot;, size = 25, face = &quot;bold&quot;))
-</code></pre>
-<figure><img src="https://ctan1237.github.io/Christian_Portfolio/images/calories%20vs%20total%20sleep%20amount%20scatterplot%20and%20trendline.png"/>
-</figure>
 
-<p>Based on this scatterplot, the trendline initially shows there isn&rsquo;t any correlation between calories burnt and amount of sleep, but on further analysis in the next graph using a box plot, we can see &hellip;</p>
-<pre><code>ggplot(data = daily_activity_sleep) +
+
+
+ggplot(data = daily_activity_sleep) +
   geom_boxplot(mapping = aes(x=step_categories, y=Calories, fill=step_categories))
 </code></pre>
-<p><figure><img src="https://ctan1237.github.io/Christian_Portfolio/images/sleep%20vs%20calories%20burnt.png"/>
+<figure><img src="https://ctan1237.github.io/Christian_Portfolio/images/sleep%20vs%20calories%20burnt.png"/>
 </figure>
 
-&hellip; there seems to be a clear relation between sleep and calories burnt.</p>
+<p>There seems to be a clear relation between sleep and calories burnt.</p>
 <p>This is an interesting chart, which shows a few unique observations -</p>
 <ul>
 <li>
