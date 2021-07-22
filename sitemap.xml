@@ -32,6 +32,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://ctan1237.github.io/Christian_Portfolio/post/project-5/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://ctan1237.github.io/Christian_Portfolio/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

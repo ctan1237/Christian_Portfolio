@@ -8,13 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://ctan1237.github.io/Christian_Portfolio/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>The Ultimate Covid-19 Data Visualization</title>
+      <title>Visualizing the world&#39;s Covid-19 Data (Dashboard)</title>
       <link>https://ctan1237.github.io/Christian_Portfolio/post/project-4/</link>
       <pubDate>Sun, 09 May 2021 10:58:08 -0400</pubDate>
       
       <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-4/</guid>
       <description>Background:
-The main goal for this project was to create a Dashboard Visualization for important data from the Covid-19 pandemic using Excel, SQL, and Tableau. The size of the spreadsheet was around 90,000 lines of data. Skills that were used included: Joins, CTE&amp;rsquo;s, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types, and Creating Visualizations/Dashboards in Tableau.
+The main goal for this project was to create a Dashboard Visualization using data from the Covid-19 pandemic using Excel, SQL, and Tableau. The size of the spreadsheet was around 90,000 rows of data. Skills that were used included: Joins, CTE&amp;rsquo;s, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types, and Creating Visualizations/Dashboards in Tableau.
 The data is from https://ourworldindata.org/covid-deaths.
 Part 1: First, I downloaded the data into excel spreadsheets to do some initial cleaning.</description>
     </item>
@@ -59,6 +59,15 @@ Part 1: First, I downloaded the data into excel spreadsheets to do some initial 
   Data Analyzing
   Share and Conclusion
   The Mission Statement: Bellabeat, a high-tech manufacturer of health-focused products for women, wants to analyze their smart device fitness data. This could help unlock new growth opportunities for the company. The goal is to focus on one of Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://ctan1237.github.io/Christian_Portfolio/post/project-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ctan1237.github.io/Christian_Portfolio/post/project-5/</guid>
+      <description></description>
     </item>
     
   </channel>
